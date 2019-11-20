@@ -1,0 +1,36 @@
+{% extends 'base.html' %}<!--for linking base .html-->
+{%load crispy_forms_tags%}
+{% block content %}
+<div class="content-section">
+    <div class="media">
+        <img class="rounded-circle account-img" src="{{user.profile.image.url}}">
+        <div class ="media-body">
+            <h2 class="account-heading">Your user id: -{{user.username}}</h2>
+            <p class ="text-secondary">{{user.email}}</p>
+            <p class ="text-secondary">Name :- {{user.profile.name}}</p>
+           
+            
+        </div>
+    </div>
+    {%if user.payment.thali > 0 %}
+    <div class="col-4">
+            <a href="javascript:{document.getElementById('thalii').submit()}"><button class="btn btn-primary btn-lg btn-block"><span class="oi oi-caret-top"></span> Thali remaining:- {{ user.payment.thali }}</button></a>
+          
+        </div>   
+
+     <div>  
+    <form id="thalii" method="POST" action="{% url 'thalii' %}">
+        {% csrf_token%}
+        <input type="hidden">
+      </form>
+    </div> 
+ <center><h1> amount remaining:- {{ user.payment.amount }}</h1></center>
+  {%else%}
+  <div>
+        <p class ="text-secondary">Sorry u had<h1>"0"</h1>  thali left </p> 
+  </div>  
+  {%endif%} 
+</div>
+
+
+{% endblock %} 
