@@ -1,7 +1,7 @@
 # mess-management
-the project is quite good.
-It helps to manage mess in colleges and school.
-This make students life easier.
+The project is quite cool for the beginners.
+This helps to manage mess in colleges and school.
+This make students life easier and add fun to their life.
 
 ## Install dependencies.
   ```$pip3 install requirements.txt```
