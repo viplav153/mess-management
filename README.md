@@ -9,5 +9,6 @@ This make students life easier.
   
   Then run with 
   ```$python3 manage.py ```
+  viplov rocks ashu sucks
   
 
