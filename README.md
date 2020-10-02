@@ -10,6 +10,6 @@ This will make user to access all the functionalities of the mess without having
   
   Then run with 
   ```$python3 manage.py ```
-  viplov rocks ashu sucks
+  
   
 
