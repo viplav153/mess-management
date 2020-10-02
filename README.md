@@ -1,6 +1,7 @@
 # mess-management
-the project is quite good
-help to manage mess in colleges and school 
+the project is quite good.
+It helps to manage mess in colleges and school.
+This make students life easier.
 
 ## Install dependencies.
   ```$pip3 install requirements.txt```
@@ -8,3 +9,5 @@ help to manage mess in colleges and school
   
   Then run with 
   ```$python3 manage.py ```
+  
+
