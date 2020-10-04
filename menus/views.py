@@ -5,7 +5,4 @@ from django.shortcuts import render, redirect
 # Create your views here.
 
 
-
-def menu(request):
-    menus=Menu.objects.all()
-    return render(request, 'menus/Menu.html',{'menus':menus})
+# chirag plzz add this function here
