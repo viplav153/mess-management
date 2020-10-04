@@ -21,18 +21,6 @@ from django.db.models import Q
         
 # Aakash paste here
 
-@login_required
-def thalii(request):
-    p_form=ProfileUpadteForm(instance=request.user.profile)
-    if request.method =='POST' :
-        a=Payment.objects.get(user=request.user)
-        a.thali-=1
-        a.amount=(a.amount)-50
-        a.save()
-
-        return redirect('/payment/thalii')
-    else:
-        return render(request,'accounts/profile.html',{'p_form':p_form})
 
 @login_required
 def thalii(request):
