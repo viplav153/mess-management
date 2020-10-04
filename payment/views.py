@@ -54,7 +54,31 @@ def thalii(request):
 
 # kushagra plzz add here
 
+@login_required
+def info(request):
+    infos= Info.objects.filter(subscribed_by=request.user).order_by('-pub_date')
+   
+    
+    if request.method == 'POST':
+        
+       
+        a= Payment.objects.get(user=request.user)
+        inf=Info()
+        inf.subs=a.subs
+            
+        inf.pub_date = timezone.datetime.now()
+        inf.subscribed_by = request.user
+        messages.success(request,f'Your meal is successfully updated!!')
+        inf.save()
+            
+        return redirect('/payment/payment')
+       
 
+    else:
+        paginator = Paginator(infos, 3) # Show 3 object per page
+        page = request.GET.get('page')
+        infos = paginator.get_page(page)
+        return render(request, 'payment/payment.html',{'infos':infos})
 
 
 
