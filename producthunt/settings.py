@@ -11,25 +11,24 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-import django_heroku
-from decouple import config 
+
 import dj_database_url
+import django_heroku
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'v!vb5xffs+9h2!uexb^u5@#c=xp!8sfxm=0ztikvz#6n)a!$g+'
-#SECRET_KEY = config('SECRET_KEY')
+# SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -45,8 +44,8 @@ INSTALLED_APPS = [
     'menus.apps.MenusConfig',
 
     'payment.apps.PaymentConfig',
-    'products.apps.ProductsConfig',#registered app
-    'accounts.apps.AccountsConfig', #registered app
+    'products.apps.ProductsConfig',  # registered app
+    'accounts.apps.AccountsConfig',  # registered app
 ]
 
 MIDDLEWARE = [
@@ -65,7 +64,7 @@ ROOT_URLCONF = 'producthunt.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['producthunt/templates'],#location of base template so that program can identify 
+        'DIRS': ['producthunt/templates'],  # location of base template so that program can identify
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,27 +79,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'producthunt.wsgi.application'
 
+# Database
+# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-#Database
-#https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
-#DATABASES = {
+# DATABASES = {
 #   'default': {
 #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        
+
 #  }
-#}
-#DATABASES['default']=dj_database_url.config(default='postgres://pwmbvfalecrgzh:a5558a6b70226ccc36e92b92e8c305e7f9e7d179433cd1edcf6cb23c6b17994d@ec2-174-129-229-106.compute-1.amazonaws.com:5432/dc0140jd6ivgdn')
-#db_from_env = dj_database_url.config(conn_max_age=600)
-#DATABASES['default'].update(db_from_env)
+# }
+# DATABASES['default']=dj_database_url.config(default='postgres://pwmbvfalecrgzh:a5558a6b70226ccc36e92b92e8c305e7f9e7d179433cd1edcf6cb23c6b17994d@ec2-174-129-229-106.compute-1.amazonaws.com:5432/dc0140jd6ivgdn')
+# db_from_env = dj_database_url.config(conn_max_age=600)
+# DATABASES['default'].update(db_from_env)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -120,7 +116,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
@@ -134,29 +129,26 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATICFILES_DIRS =[
-    os.path.join(BASE_DIR,'producthunt/static/')
-]#for linking static files 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'producthunt/static/')
+]  # for linking static files
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-STATIC_ROOT= os.path.join(BASE_DIR,'static')
-
-STATICFILES_STORAGE='whitenoise.storage.CompressManifestStaticFilesStorage'
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressManifestStaticFilesStorage'
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT= os.path.join(BASE_DIR,'media')
-MEDIA_URL='/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 django_heroku.settings(locals())
 
-LOGIN_URL ='login'
+LOGIN_URL = 'login'
 
-CRISPY_TEMPLATE_PACK='bootstrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL ='thalii'
+LOGIN_REDIRECT_URL = 'thalii'

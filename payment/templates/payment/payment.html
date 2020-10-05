@@ -1,55 +1,55 @@
 {% extends 'base.html' %}
-{% load staticfiles %} 
+{% load staticfiles %}
 {% block content %}
-{% if error %}
-{{ error }}
-<br />
-<br />
-{% endif %}
-<h1>Continue Your Meal !</h1>
+    {% if error %}
+        {{ error }}
+        <br/>
+        <br/>
+    {% endif %}
+    <h1>Continue Your Meal !</h1>
 
-<form method="POST" action="{% url 'payment' %}" enctype="multipart/form-data">
-{% csrf_token %}
+    <form method="POST" action="{% url 'payment' %}" enctype="multipart/form-data">
+        {% csrf_token %}
 
-number of month :
-<br />
-<input type="text" name="subs" />
-<br />
+        number of month :
+        <br/>
+        <input type="text" name="subs"/>
+        <br/>
 
-<br />
+        <br/>
 
-<input class="btn btn-primary" type="submit" value="Recharge" />
-</form>
-<hr>
-<center><h1>last Payments</h1></center>
+        <input class="btn btn-primary" type="submit" value="Recharge"/>
+    </form>
+    <hr>
+    <center><h1>last Payments</h1></center>
 
 
-{% for inf in infos %}
-<div class="row pt-3">
-  <div class="col-2" style="cursor: pointer;">
-    <img src="{% static '10.png' %}" class="img-fluid" />
-  </div>
-  <div class="col-6"  style="cursor: pointer;">
-    <h1>Subscription of {{ inf.subs }} month</h1>
-    <p>Resubscribed on:-{{ inf.pub_date }}</p>
-    <p>subscribed by:-{{inf.subscribed_by}}</p>
-  </div>
-</div>
-<hr>
-{% endfor %}
-<br/>
-<br/>
-<div class="pagination">
+    {% for inf in infos %}
+        <div class="row pt-3">
+            <div class="col-2" style="cursor: pointer;">
+                <img src="{% static '10.png' %}" class="img-fluid"/>
+            </div>
+            <div class="col-6" style="cursor: pointer;">
+                <h1>Subscription of {{ inf.subs }} month</h1>
+                <p>Resubscribed on:-{{ inf.pub_date }}</p>
+                <p>subscribed by:-{{ inf.subscribed_by }}</p>
+            </div>
+        </div>
+        <hr>
+    {% endfor %}
+    <br/>
+    <br/>
+    <div class="pagination">
         <span class="step-links">
             {% if infos.has_previous %}
                 <a href="?page=1">&laquo; first</a>
                 <a href="?page={{ infos.previous_page_number }}">previous</a>
             {% endif %}
-    
+
             <span class="current">
                 Page {{ infos.number }} of {{ infos.paginator.num_pages }}.
             </span>
-    
+
             {% if infos.has_next %}
                 <a href="?page={{ infos.next_page_number }}">next</a>
                 <a href="?page={{ infos.paginator.num_pages }}">last &raquo;</a>
@@ -57,8 +57,8 @@ number of month :
         </span>
     </div>
 
-</div>
-    
+    </div>
+
 
 
 

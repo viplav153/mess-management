@@ -1,56 +1,59 @@
 {% extends 'base.html' %}
 
-{% load staticfiles %}  
+{% load staticfiles %}
 {% block content %}
-{% if error %}
-{{ error }}
-<br />
-<br />
-{% endif %}
-<h1>Give feedback !</h1>
+    {% if error %}
+        {{ error }}
+        <br/>
+        <br/>
+    {% endif %}
+    <h1>Give feedback !</h1>
 
-<form method="POST" action="{% url 'create' %}" enctype="multipart/form-data">
-{% csrf_token %}
-Name :
-<br/>
-<input type="text" name="title" />
-<br />
-feedback :
-<br />
-<input type="text" name="body" />
-<br />
-Suggestion :
-<br />
-<input type="text" name="url" />
-<br />
+    <form method="POST" action="{% url 'create' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        Name :
+        <br/>
+        <input type="text" name="title"/>
+        <br/>
+        feedback :
+        <br/>
+        <input type="text" name="body"/>
+        <br/>
+        Suggestion :
+        <br/>
+        <input type="text" name="url"/>
+        <br/>
 
-<br />
+        <br/>
 
-<input class="btn btn-primary" type="submit" value="Give feedback" />
-</form>
-<hr>
-<center><h1>Recent feedbacks</h1></center>
-{% for product in products %}
-<div class="row pt-3">
-  <div class="col-2" onclick="window.location='{% url 'detail' product.id %}';" style="cursor: pointer;">
-    <img src="{% static 'feedback.jpg' %}" class="img-fluid" />
-  </div>
-  <div class="col-6" onclick="window.location='{% url 'detail' product.id %}';" style="cursor: pointer;">
-    <h1>{{ product.title }}</h1>
-    <p>{{ product.summary }}</p>
-  </div>
-  <div class="col-4">
-    <a href="javascript:{document.getElementById('upvote{{ product.id }}').submit()}"><button class="btn btn-primary btn-lg btn-block"><span class="oi oi-caret-top"></span> Agree {{ product.votes_total }}</button></a>
-  </div>
-</div>
+        <input class="btn btn-primary" type="submit" value="Give feedback"/>
+    </form>
+    <hr>
+    <center><h1>Recent feedbacks</h1></center>
+    {% for product in products %}
+        <div class="row pt-3">
+            <div class="col-2" onclick="window.location='{% url 'detail' product.id %}';" style="cursor: pointer;">
+                <img src="{% static 'feedback.jpg' %}" class="img-fluid"/>
+            </div>
+            <div class="col-6" onclick="window.location='{% url 'detail' product.id %}';" style="cursor: pointer;">
+                <h1>{{ product.title }}</h1>
+                <p>{{ product.summary }}</p>
+            </div>
+            <div class="col-4">
+                <a href="javascript:{document.getElementById('upvote{{ product.id }}').submit()}">
+                    <button class="btn btn-primary btn-lg btn-block"><span class="oi oi-caret-top"></span>
+                        Agree {{ product.votes_total }}</button>
+                </a>
+            </div>
+        </div>
 
-<form id="upvote{{ product.id }}" method="POST" action="{% url 'upvote' product.id %}">
-  {% csrf_token%}
-  <input type="hidden">
-</form>
-{% endfor %}
+        <form id="upvote{{ product.id }}" method="POST" action="{% url 'upvote' product.id %}">
+            {% csrf_token %}
+            <input type="hidden">
+        </form>
+    {% endfor %}
 
-<div class="pagination">
+    <div class="pagination">
     <span class="step-links">
         {% if products.has_previous %}
             <a href="?page=1">&laquo; first</a>
@@ -66,8 +69,8 @@ Suggestion :
             <a href="?page={{ products.paginator.num_pages }}">last &raquo;</a>
         {% endif %}
     </span>
-</div>
+    </div>
 
-</div>
+    </div>
 
 {% endblock %}

@@ -2,168 +2,180 @@
 
 {% extends 'base.html' %}
 
-{% load staticfiles %}  
+{% load staticfiles %}
 {% block content %}
-<style>
-  .navbar {
-          margin-bottom: 0;
-          border-radius: 0;
-          background-color: rgb(14, 130, 180);
-          color: #FFF;
-          padding: .50% 0;
-          font-size: 1.2em;
-          border: 0;
-      }
-footer{
-  width:100%;
-  background-color: rgb(14, 180, 136);
-  padding: 0%;
-  color:#FFF;
-}
-.fa{
-  padding:15px;
-  font-size: 30px;
-  color:#FFF;
-}
-.fa:hover{
-  color:#D5D5D5;
-  text-decoration:none;
-} @media (max-width: 900px){
-  
-  .fa{font-size:20px;
-      padding:10px:
-  }
-}
-@media (max-width: 600px){
-  .carousel-caption{
-  display:none;
-}
-  #icon{
-      max-width:150px;
-       }
-  h2{
-      fontsize: 1.9em;
-  }
-  
-}
-</style>
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-        <li data-target="#myCarousel" data-slide-to="3"></li>
-        <li data-target="#myCarousel" data-slide-to="4"></li>
-        <li data-target="#myCarousel" data-slide-to="5"></li>
-    </ol>
+    <style>
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+            background-color: rgb(14, 130, 180);
+            color: #FFF;
+            padding: .50% 0;
+            font-size: 1.2em;
+            border: 0;
+        }
+
+        footer {
+            width: 100%;
+            background-color: rgb(14, 180, 136);
+            padding: 0%;
+            color: #FFF;
+        }
+
+        .fa {
+            padding: 15px;
+            font-size: 30px;
+            color: #FFF;
+        }
+
+        .fa:hover {
+            color: #D5D5D5;
+            text-decoration: none;
+        }
+
+        @media (max-width: 900px) {
+
+            .fa {
+                font-size: 20px;
+                padding: 10px:
+            }
+        }
+
+        @media (max-width: 600px) {
+            .carousel-caption {
+                display: none;
+            }
+
+            #icon {
+                max-width: 150px;
+            }
+
+            h2 {
+                fontsize: 1.9em;
+            }
+
+        }
+    </style>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4"></li>
+            <li data-target="#myCarousel" data-slide-to="5"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+
+                <img src="{% static '1.jpg' %}">
+
+            </div>
+            <!--- End Active-->
+            <div class="item">
+                <img src="{% static '2.jpg' %}">
+
+
+            </div>
+            <div class="item">
+                <img src="{% static '3.jpg' %}">
+
+
+            </div>
+            <div class="item">
+                <img src="{% static '4.jpg' %}">
+
+            </div>
+            <div class="item">
+                <img src="{% static '5.jfif' %}">
+
+
+            </div>
+            <div class="item">
+                <img src="{% static '6.jpg' %}">
+
+
+            </div>
+        </div>
+        <!---Start Slider Controls-->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+
+    </div>
+    <br>
+    <div>
+        <marquee bgcolor="yellow" onmouseover="this.stop();" onmouseout="this.start();">
+            Welcome to MESS version 1.0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hurry!!! register Amazing discount available
+        </marquee>
+    </div>
+    <br>
     <div class="carousel-inner" role="listbox">
         <div class="item active">
 
-            <img src="{% static '1.jpg' %}">
-
-        </div>
-        <!--- End Active-->
-        <div class="item">
-            <img src="{% static '2.jpg' %}">
+            <img src="{% static '7.jpg' %}">
 
 
-        </div>
-        <div class="item">
-            <img src="{% static '3.jpg' %}">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="">
+            <script src=""></script>
+            <script></script>
 
-
-        </div>
-        <div class="item">
-            <img src="{% static '4.jpg' %}">
-
-        </div>
-        <div class="item">
-            <img src="{% static '5.jfif' %}">
-
-
-        </div>
-        <div class="item">
-            <img src="{% static '6.jpg' %}">
-
-
-        </div>
-    </div>
-    <!---Start Slider Controls-->
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-
-</div>
-<br>
-<div>
-<marquee bgcolor="yellow" onmouseover="this.stop();" onmouseout="this.start();">
-  Welcome to MESS version 1.0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hurry!!! register Amazing discount available
-</marquee>
-</div>
-<br>
-<div class="carousel-inner" role="listbox">
-    <div class="item active">
-
-        <img src="{% static '7.jpg' %}">
-        
-
-        
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="">
-        <script src=""></script>
-        <script></script>
-        
-        <div class="carousel-caption" >
-            <h1>
-                <font style="font-family:Montserrat" style="font-size:24px" color ="black" ><mark>For Registration Click Here</mark</font>
-            </h1>
-            <br>
-            <a href="{% url 'signup' %}" target="_blank"><button type="button" class="btn btn-default">Register Here</button></a>
-        </div>
-    </div>
-    <p id="contact"></p>
-
-    <footer class="container-fluid text center">
-        <div class="row">
-            <div class="col-sm-4">
-                <h3>Contact us for Help:-</h3>
-                <p>Viplav Anand :- 9424685798<br> Vedansh Dixit :- 9130474358 <br>email:-yuvrajgupta@gmail.com</p>
+            <div class="carousel-caption">
+                <h1>
+                    <font style="font-family:Montserrat" style="font-size:24px" color="black">
+                        <mark>For Registration Click Here</mark
+                    </font>
+                </h1>
                 <br>
-                <h4> Our address and contact info here</h4>
-                <p>Bharati Vidyapeeth, Bharati Vidyapeeth Campus, Dhankawadi, Pune, Maharashtra 411046</p>
+                <a href="{% url 'signup' %}" target="_blank">
+                    <button type="button" class="btn btn-default">Register Here</button>
+                </a>
             </div>
-            <div class="col-sm-4">
-                <h3> Connect</h3>
-                <a href="https://www.facebook.com/" class="fa fa-facebook" target="_blank"></a>
-                <a href="https://twitter.com/" class="fa fa-twitter" target="_blank"></a>
-                <a href="#" class="fa fa-linkedin" target="_blank"></a>
-                <a href="https://www.instagram.com/" class="fa fa-instagram" target="_blank"></a>
-            </div>
-
-            <div class="col-sm-4">
-                <img src="{% static 'logo1.png' %}" height=40 width=150  class="icon">
-            </div>
-
-
         </div>
-        <!-- Contact End -->
+        <p id="contact"></p>
 
-    </footer>
+        <footer class="container-fluid text center">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h3>Contact us for Help:-</h3>
+                    <p>Viplav Anand :- 9424685798<br> Vedansh Dixit :- 9130474358 <br>email:-yuvrajgupta@gmail.com</p>
+                    <br>
+                    <h4> Our address and contact info here</h4>
+                    <p>Bharati Vidyapeeth, Bharati Vidyapeeth Campus, Dhankawadi, Pune, Maharashtra 411046</p>
+                </div>
+                <div class="col-sm-4">
+                    <h3> Connect</h3>
+                    <a href="https://www.facebook.com/" class="fa fa-facebook" target="_blank"></a>
+                    <a href="https://twitter.com/" class="fa fa-twitter" target="_blank"></a>
+                    <a href="#" class="fa fa-linkedin" target="_blank"></a>
+                    <a href="https://www.instagram.com/" class="fa fa-instagram" target="_blank"></a>
+                </div>
 
-    <!-- Register ends -->
+                <div class="col-sm-4">
+                    <img src="{% static 'logo1.png' %}" height=40 width=150 class="icon">
+                </div>
 
 
-<!---End Slider-->
+            </div>
+            <!-- Contact End -->
 
-  
+        </footer>
+
+        <!-- Register ends -->
 
 
- 
+        <!---End Slider-->
+
+
+
+
+
 
 {% endblock %}

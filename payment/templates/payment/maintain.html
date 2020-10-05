@@ -1,36 +1,40 @@
 {% extends 'base.html' %}
-{% load staticfiles %} 
+{% load staticfiles %}
 {% block content %}
-{% if error %}
-{{ error }}
-<br />
-<br />
-{% endif %}
-<h1>DO want to Continue? !</h1>
-<hr>
-<div class="col-4">
-    <a href="javascript:{document.getElementById('info').submit()}"><button class="btn btn-primary btn-lg btn-block"><span class="oi oi-caret-top"></span> Confirm</button></a>
-  
-</div>   
+    {% if error %}
+        {{ error }}
+        <br/>
+        <br/>
+    {% endif %}
+    <h1>DO want to Continue? !</h1>
+    <hr>
+    <div class="col-4">
+        <a href="javascript:{document.getElementById('info').submit()}">
+            <button class="btn btn-primary btn-lg btn-block"><span class="oi oi-caret-top"></span> Confirm</button>
+        </a>
 
-<div>  
-<form id="info" method="POST" action="{% url 'info' %}">
-{% csrf_token%}
-<input type="hidden">
-</form>
-</div> 
-<br/>
-<div class="col-4">
-    <a href="javascript:{document.getElementById('cancel').submit()}"><button class="btn btn-primary btn-lg btn-block"><span class="oi oi-caret-top"></span> Cancel</button></a>
-  
-</div>   
+    </div>
 
-<div>  
-<form id="cancel" method="POST" action="{% url 'cancel' %}">
-{% csrf_token%}
-<input type="hidden">
-</form>
-</div> 
+    <div>
+        <form id="info" method="POST" action="{% url 'info' %}">
+            {% csrf_token %}
+            <input type="hidden">
+        </form>
+    </div>
+    <br/>
+    <div class="col-4">
+        <a href="javascript:{document.getElementById('cancel').submit()}">
+            <button class="btn btn-primary btn-lg btn-block"><span class="oi oi-caret-top"></span> Cancel</button>
+        </a>
+
+    </div>
+
+    <div>
+        <form id="cancel" method="POST" action="{% url 'cancel' %}">
+            {% csrf_token %}
+            <input type="hidden">
+        </form>
+    </div>
 
 
 
