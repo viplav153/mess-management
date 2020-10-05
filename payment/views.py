@@ -12,12 +12,50 @@ from django.db.models import Q
 # Create your views here.
 @login_required(login_url="/accounts/login")
 # NIKHIL plzz add here
-
+def payment(request):
+    infos= Info.objects.filter(subscribed_by=request.user).order_by('-pub_date')
+    
+    
+    
+    if request.method == 'POST':
+        try:
+            if(int(request.POST['subs'])<=12):
+                a=Payment.objects.get(user=request.user)
+        
+                a.subs = int(request.POST['subs'])
+                a.amount = a.amount + (a.subs)*3000
+                a.thali=   a.thali + (a.subs)*60
+            
+                a.pub_date = timezone.datetime.now()
+                messages.success(request,f'please take cash  {(a.subs)*3000}!!')
+        
+                a.save()
+                return render(request,'payment/maintain.html')
+            else:
+                messages.success(request,f'please input months less than 12 !!')
+                return render(request, 'payment/payment.html',{'infos':infos})
 
             
             
+        except ObjectDoesNotExist:
+            b=Payment()
+            b.user=request.user
+            b.subs = int(request.POST['subs'])
+            b.amount = b.amount + (b.subs)*3000
+            b.thali=   b.thali + (b.subs)*60
+            
+            b.pub_date = timezone.datetime.now()
+            messages.success(request,f'please take cash{(b.subs)*3000}!!')
+            b.save()
+            return render(request,'payment/maintain.html')
+    else:
+        paginator = Paginator(infos, 3) # Show 3 object per page
+        page = request.GET.get('page')
+        infos = paginator.get_page(page)
+        return render(request, 'payment/payment.html',{'infos':infos})
 
-
+            
+            
         
 # Aakash paste here
 
