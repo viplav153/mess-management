@@ -81,7 +81,18 @@ def thalii(request):
 
 # kushagra plzz add here
 
-
+@login_required
+def cancel(request):
+   
+    if request.method =='POST' :
+        a=Payment.objects.get(user=request.user)
+        a.thali-=(a.subs)*60
+        a.amount=(a.amount)- (a.subs)*3000
+        a.save()
+        messages.success(request,f'Oops you cancelled your request')
+        return redirect('/payment/payment')
+    else:
+        return render(request,'payment/payment.html',)
 
 
 
