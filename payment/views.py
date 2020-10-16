@@ -11,7 +11,6 @@ from django.db.models import Q
 
 # Create your views here.
 @login_required(login_url="/accounts/login")
-# NIKHIL plzz add here
 def payment(request):
     infos= Info.objects.filter(subscribed_by=request.user).order_by('-pub_date')
     
@@ -54,20 +53,50 @@ def payment(request):
         infos = paginator.get_page(page)
         return render(request, 'payment/payment.html',{'infos':infos})
 
+
             
             
+
+            
+@login_required
+def thalii(request):
+    p_form=ProfileUpadteForm(instance=request.user.profile)
+    if request.method =='POST' :
+        a=Payment.objects.get(user=request.user)
+        a.thali-=1
+        a.amount=(a.amount)-50
+        a.save()
+
+        return redirect('/payment/thalii')
+    else:
+        return render(request,'accounts/profile.html',{'p_form':p_form})
+
+
+@login_required
+def info(request):
+    infos= Info.objects.filter(subscribed_by=request.user).order_by('-pub_date')
+   
+    
+    if request.method == 'POST':
         
-# Aakash paste here
+       
+        a= Payment.objects.get(user=request.user)
+        inf=Info()
+        inf.subs=a.subs
+            
+        inf.pub_date = timezone.datetime.now()
+        inf.subscribed_by = request.user
+        messages.success(request,f'Your meal is successfully updated!!')
+        inf.save()
+            
+        return redirect('/payment/payment')
+       
 
-
-
-
-
-
-
-
-
-# kushagra plzz add here
+    else:
+        paginator = Paginator(infos, 3) # Show 3 object per page
+        page = request.GET.get('page')
+        infos = paginator.get_page(page)
+        return render(request, 'payment/payment.html',{'infos':infos})
 
 @login_required
 def cancel(request):
@@ -81,20 +110,4 @@ def cancel(request):
         return redirect('/payment/payment')
     else:
         return render(request,'payment/payment.html',)
-
-
-
-@login_required
-def cancel(request):
    
-    if request.method =='POST' :
-        a=Payment.objects.get(user=request.user)
-        a.thali-=(a.subs)*60
-        a.amount=(a.amount)- (a.subs)*3000
-        a.save()
-        messages.success(request,f'Oops you cancelled your request')
-        return redirect('/payment/payment')
-    else:
-        return render(request,'payment/payment.html',)
-
-
