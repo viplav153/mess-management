@@ -8,7 +8,8 @@ from django.contrib import messages
 def home(request):
     products = Product.objects
     return render(request, 'products/home.html',{'products':products})
-
+def addmeUp():
+    return 6+7
 
 #aakash paste your code here
 @login_required(login_url="/accounts/signup")
